@@ -1,0 +1,28 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<vector<int>> dots) {
+    // 정렬
+    sort(dots.begin(), dots.end());
+    
+    // 뒤집기
+    reverse(dots.begin(), dots.end());
+    
+    do {
+        // 두 직선의 기울기 계산
+        double w1 = dots[0][0] - dots[1][0];
+        double h1 = dots[0][1] - dots[1][1];
+        double w2 = dots[2][0] - dots[3][0];
+        double h2 = dots[2][1] - dots[3][1];
+        double grad1 = h1 / w1;
+        double grad2 = h2 / w2;
+        
+        // 평행하는지 확인
+        if (grad1 == grad2) return 1;
+        
+    } while (prev_permutation(dots.begin(), dots.end()));   // 좌표 순서 변경(조합 뽑기)
+
+    return 0;
+}

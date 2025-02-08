@@ -1,0 +1,52 @@
+#include <vector>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+
+int solution(int a, int b, int c, int d) 
+{
+    // 나온 갯수 세기
+    map<int, int> count;
+    count[a]++;
+    count[b]++;
+    count[c]++;
+    count[d]++;
+    
+    // 나온 숫자 저장
+    vector<int> key;
+    for (const auto& p : count)
+            key.push_back(p.first);
+    
+    // 나온 주사위 숫자가 1개
+    if (count.size() == 1)
+    {
+        return 1111 * a;
+    }
+    
+    // 나온 주사위 숫자 종류가 2개
+    if (count.size() == 2)
+    {
+        int n1 = count[key[0]];
+        int n2 = count[key[1]];
+        if (n1 == n2) return (key[0] + key[1]) * abs(key[0] - key[1]);
+        if (n1 > n2)  return (10 * key[0] + key[1]) * (10 * key[0] + key[1]);
+        if (n1 < n2)  return (10 * key[1] + key[0]) * (10 * key[1] + key[0]);
+    }
+    
+    // 나온 주사위 숫자 종류가 3개
+    if (count.size() == 3)
+    {
+        if (count[key[0]] == 2) return key[1] * key[2];
+        if (count[key[1]] == 2) return key[2] * key[0];
+        if (count[key[2]] == 2) return key[0] * key[1];
+    }
+    
+    // 나온 주사위 숫자 종류가 4개
+    if (count.size() == 4)
+    {
+        return min(key[0], min(key[1], min(key[2], key[3])));
+    }
+    
+    return -1;
+}
