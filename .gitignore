@@ -1,0 +1,20 @@
+# Debug, Release 폴더
+Kimgeona/Kimgeona/x64/Debug/
+Kimgeona/Kimgeona/x64/Release/
+Kimgeona/x64/Debug/
+Kimgeona/x64/Release/
+
+# Visual Studio 캐시
+Kimgeona/.vs/
+
+# 기타 자동 생성되는 파일들
+*.aps
+*.suo
+*.db
+*.log
+*.ilk
+*.obj
+*.pch
+*.tlog
+*.pdb
+*.idb
